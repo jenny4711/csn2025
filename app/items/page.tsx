@@ -86,10 +86,11 @@ export default function ItemsPage() {
             >
               {item.image && (
                 <div className="w-full h-48 relative">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               )}

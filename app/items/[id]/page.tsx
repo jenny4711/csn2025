@@ -3,7 +3,17 @@
 import { useState, useEffect } from 'react';
 import { getItem } from '@/utils/localStorage';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+
+interface Item {
+  id: string;
+  username: string;
+  title: string;
+  content: string;
+  image?: string;
+  url: string;
+  createdAt: number;
+}
 
 interface PageProps {
   params: {
@@ -12,9 +22,8 @@ interface PageProps {
 }
 
 export default function ItemDetailPage({ params }: PageProps) {
-  const router = useRouter();
   const { id } = params;
-  const [item, setItem] = useState<any>(null);
+  const [item, setItem] = useState<Item | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +36,7 @@ export default function ItemDetailPage({ params }: PageProps) {
         } else {
           setError('해당 항목을 찾을 수 없습니다.');
         }
-      } catch (err) {
+      } catch {
         setError('항목을 불러오는 중 오류가 발생했습니다.');
       } finally {
         setIsLoading(false);
@@ -77,10 +86,11 @@ export default function ItemDetailPage({ params }: PageProps) {
       <article className="bg-white rounded-lg shadow-md overflow-hidden">
         {item.image && (
           <div className="w-full h-64 sm:h-72 md:h-96 relative">
-            <img 
+            <Image 
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         )}

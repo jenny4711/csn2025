@@ -43,8 +43,6 @@ const products: Product[] = [
 ];
 
 export default function GiftShop() {
-  const [activeProduct, setActiveProduct] = useState<Product>(products[0]);
-
   useEffect(() => {
     const handleScroll = () => {
       const productElements = document.querySelectorAll('.product-image');
@@ -55,7 +53,7 @@ export default function GiftShop() {
         const elementCenter = rect.top + rect.height / 2;
 
         if (elementCenter > 0 && elementCenter < windowHeight) {
-          setActiveProduct(products[index]);
+          // Do something with the active product if needed
         }
       });
     };

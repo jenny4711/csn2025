@@ -14,38 +14,15 @@ const breakpointColumns = {
   640: 1    // xs
 };
 
-const posts = [
-  {
-    username: "pedropequeno",
-    title: "New York Creative Meet",
-    description: "It's February which means we are officially THREE WEEKS AWAY from the IRL NYC creative meet!",
-    imageUrl: "https://picsum.photos/800/400"
-  },
-  {
-    username: "wojtek",
-    title: "Headers Club",
-    description: "Browse the hottest header images on the Internet.",
-    imageUrl: "https://picsum.photos/800/401"
-  },
-  {
-    username: "emre",
-    title: "Corts Brand Identity",
-    description: "Corts is a platform for Beauty, Fashion & Sport from Los Angeles, CA.",
-    imageUrl: "https://picsum.photos/800/402"
-  },
-  // Add more sample posts as needed
-]
-
 export default function Explore() {
-  const [posts, setPosts] = useState([]);
-  useEffect(()=>{
-    const fetchPosts =  () => {
-      const response:any =  getItems();
+  useEffect(() => {
+    const fetchPosts = () => {
+      const response = getItems();
       console.log(response);
-      // setPosts(response);
     }
     fetchPosts();
-  },[])
+  }, []);
+
   return (
     <div>
       <div className="p-4">

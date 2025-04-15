@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from 'react';
 import { getItem, editItem } from '@/utils/localStorage';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface PageProps {
   params: {
@@ -43,7 +44,7 @@ export default function EditItemPage({ params }: PageProps) {
         } else {
           setError('해당 항목을 찾을 수 없습니다.');
         }
-      } catch (err) {
+      } catch {
         setError('항목을 불러오는 중 오류가 발생했습니다.');
       } finally {
         setIsLoading(false);
@@ -198,9 +199,11 @@ export default function EditItemPage({ params }: PageProps) {
           {formData.image && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 mb-1">이미지 미리보기:</p>
-              <img 
+              <Image 
                 src={formData.image} 
                 alt="Preview" 
+                width={400}
+                height={300}
                 className="h-40 object-cover rounded border border-gray-300" 
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://via.placeholder.com/400x300?text=Image+Error";

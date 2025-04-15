@@ -7,7 +7,7 @@ interface Item {
   image: string;
   createdAt: Date;
 }
-interface UserDetails {
+export interface UserDetails {
   username: string;
   displayName: string;
   password?: string; // Storing plain password is insecure
@@ -16,6 +16,8 @@ interface UserDetails {
   description?: string;
   createdAt: Date;
 }
+
+
 
 const STORAGE_KEY = 'csn-next-items';
 
@@ -41,34 +43,19 @@ export const saveItem = (item: Omit<Item, 'id' | 'createdAt'>): Item => {
   return newItem;
 };
 //user list 보여주기
-const getUserDetailsArray = (): UserDetails[] => {
-  if (typeof window === 'undefined') {
-    return [];
-  }
-  const storedDetails = localStorage.getItem("csn-next-item");
- 
-  try {
-    // Ensure it's an array, default to empty array if not found or invalid
-    const parsed = storedDetails ? JSON.parse(storedDetails) : [];
-    console.log(Array.isArray(parsed) ? parsed : [],'parsed');
-    return Array.isArray(parsed) ? parsed : [];
-  } catch (e) {
-    console.error("Error parsing user details array:", e);
-    return []; // Return empty array on parsing error
-  }
+export const getUserDetailsArray = (): UserDetails[] => {
+  if (typeof window === "undefined") return []; // 서버에서 localStorage 접근 방지
+  const data = localStorage.getItem("csn-next-item");
+  return data ? JSON.parse(data) : [];
 };
 
-//user 상세 보기
 export const getUserDetails = (username: string): UserDetails | undefined => {
- 
+  console.log(username,'username!!!!!!!!!!!')
+
   const allUsers = getUserDetailsArray();
-  
-  const user:any = allUsers.find(u => u.username === username);
- 
-  return user;
+  console.log(allUsers,'allUsers!!!!!!!!!!!')
+  return allUsers.find(u => u.username === username);
 };
-
-
 // Corrected saveUserDetails
 export const saveUserDetails = (userDetails: Omit<UserDetails, 'createdAt'>): void => {
   if (typeof window === 'undefined') return;

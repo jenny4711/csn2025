@@ -3,8 +3,6 @@ import { useState } from 'react';
 
 interface GiftItemProps {
   title: string;
-  description: string;
-  details: string;
   price: number;
   sizes?: string[];
   imageUrl: string;
@@ -12,8 +10,6 @@ interface GiftItemProps {
 
 export default function GiftItem({
   title = "In the Zone Tee",
-  description = "We found this beautiful signage in Hawaii and asked community member @iarafath to immortalize it in his highly detailed illustrative style. The graphic is on the back of the t-shirt, without branding or other embellishments.",
-  details = "Printed by Poppy Press on a 8oz heavyweight combed cotton tee, made in Canada by Roopa Knitting Mills. View their site for sizing.",
   price = 30,
   sizes = ["S", "M", "L", "XL", "XXL"],
   imageUrl = "https://res.cloudinary.com/read-cv/image/upload/c_limit,h_1536,w_2048/dpr_1.0/v1/1/marketing/gift-shop/in-the-zone-tee-transparent.png?_a=DATAdtfiZAA0"

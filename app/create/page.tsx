@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveItem } from '@/utils/localStorage';
+import Image from 'next/image';
 
 export default function CreateItemPage() {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function CreateItemPage() {
       };
 
       // Save item
-      const savedItem = saveItem(itemData);
+      saveItem(itemData);
       
       // Show success message
       setSuccess(true);
@@ -150,9 +151,11 @@ export default function CreateItemPage() {
           {formData.image && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 mb-1">이미지 미리보기:</p>
-              <img 
+              <Image 
                 src={formData.image} 
                 alt="Preview" 
+                width={400}
+                height={300}
                 className="h-40 object-cover rounded border border-gray-300" 
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://via.placeholder.com/400x300?text=Image+Error";

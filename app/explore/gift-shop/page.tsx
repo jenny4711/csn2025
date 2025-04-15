@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect, useContext } from 'react';
-import Image from 'next/image';
-
+import { useState, useEffect } from 'react';
 import GiftItem from './components/GiftItem';
+
 interface Product {
   id: number;
   name: string;
@@ -45,14 +44,11 @@ const products: Product[] = [
 
 export default function GiftShop() {
   const [activeProduct, setActiveProduct] = useState<Product>(products[0]);
-  const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
       const productElements = document.querySelectorAll('.product-image');
       const windowHeight = window.innerHeight;
-      const threshold = windowHeight / 2;
 
       productElements.forEach((element, index) => {
         const rect = element.getBoundingClientRect();
@@ -76,8 +72,6 @@ export default function GiftShop() {
           <GiftItem
             key={product.id}
             title={product.name}
-            description={product.description}
-            details={product.details}
             price={product.price}
             sizes={product.sizes}
             imageUrl={product.imageUrl}

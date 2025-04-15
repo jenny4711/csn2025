@@ -1,19 +1,9 @@
 'use client';
-import { useState , useEffect} from 'react';
-import { useRouter } from 'next/navigation';
-import NavBar from "@/components/NavBar"
+import { useState, useEffect } from 'react';
 import { ContainerBox } from "./components/containerBox"
 import { sources } from '@/utils/tools'
 import Masonry from 'react-masonry-css'
 import { getItems } from '@/utils/localStorage';
-const items = [
-  {title:"Front page",url:"/explore"},
-  {title:"Job board",url:"/explore/job-board"},
-  {title:"Activity",url:"/explore/activity"},
-  {title:"Gift shop",url:"/explore/gift-shop"},
-  {title:"Pricing",url:"/explore/pricing"},
-  {title:"About",url:"/explore/about"},
-]
 
 const breakpointColumns = {
   default: 5,
@@ -58,7 +48,6 @@ export default function Explore() {
   },[])
   return (
     <div>
-      {/* <NavBar title={items} url="/explore" /> */}
       <div className="p-4">
         <Masonry
           breakpointCols={breakpointColumns}

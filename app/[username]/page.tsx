@@ -5,15 +5,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar"
 //             <AvatarImage src={`https://github.com/${username}.png`} />
 //             <AvatarFallback>{username[0]}</AvatarFallback>
 
-interface UserDetails {
-  username: string;
-  displayName: string;
-  password?: string;
-  image?: string;
-  email?: string;
-  description?: string;
-  createdAt: Date;
-}
+
 
 export default async function UserPage({
   params,

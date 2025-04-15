@@ -40,8 +40,17 @@
 //   );
 // }
 // app/[username]/page.tsx
+// app/[username]/page.tsx
+
 import ClientWrapper from "./ClientWrapper";
 
-export default function Page({ params }: { params: { username: string } }) {
-  return <ClientWrapper username={params?.username} />;
+interface PageProps {
+  params: {
+    username: string;
+  };
 }
+
+export default function Page({ params }: PageProps) {
+  return <ClientWrapper username={params.username} />;
+}
+

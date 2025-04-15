@@ -15,12 +15,11 @@ interface Item {
   createdAt: number;
 }
 
-type PageProps = {
+export default function ItemDetailPage({
+  params,
+}: {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export default function ItemDetailPage({ params }: PageProps) {
+}) {
   const { id } = params;
   const [item, setItem] = useState<Item | null>(null);
   const [isLoading, setIsLoading] = useState(true);

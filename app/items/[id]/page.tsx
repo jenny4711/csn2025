@@ -15,11 +15,10 @@ interface Item {
   createdAt: number;
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+type PageProps = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export default function ItemDetailPage({ params }: PageProps) {
   const { id } = params;

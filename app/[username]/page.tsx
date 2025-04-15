@@ -1,7 +1,4 @@
-'use client';
-
 import { getUserDetails } from "@/utils/localStorage";
-import { useEffect, useState } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 
 // <Avatar className="h-8 w-8">
@@ -18,37 +15,18 @@ interface UserDetails {
   createdAt: Date;
 }
 
-interface PageProps {
-  params: {
-    username: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function UserPage({ params }: PageProps) {
-  const [item, setItem] = useState<UserDetails | null | undefined>(undefined);
+export default async function UserPage({
+  params,
+}: {
+  params: { username: string };
+}) {
   const { username } = params;
- 
-  useEffect(() => {
-    try {
-      const foundItem = getUserDetails(username);
-      console.log(foundItem, 'foundItem');
-      setItem(foundItem);
-    } catch (e) {
-      console.error("Error fetching item:", e);
-      setItem(null);
-    }
-  }, [username]);
-
-  if (item === undefined) {
-    return <div>Loading...</div>;
-  }
+  const item = getUserDetails(username);
 
   if (!item) {
     return <div>User not found.</div>;
   }
 
-  // Render a specific property, e.g., username or title
   return( 
     <div className='flex flex-col items-center justify-center h-screen'>
       <div className="flex flex-col items-start justify-center w-1/3">

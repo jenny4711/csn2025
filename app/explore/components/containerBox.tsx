@@ -60,9 +60,16 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
         
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm text-gray-500">
-            <button className="hover:text-gray-900 flex items-center gap-1">
-              <span>Reply directly...</span>
-            </button>
+            <textarea 
+              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none overflow-hidden"
+              placeholder="Reply directly..."
+              rows={1}
+              onInput={(e) => {
+                const target = e.target as HTMLTextAreaElement;
+                target.style.height = 'auto';
+                target.style.height = target.scrollHeight + 'px';
+              }}
+            />
             <div className="relative">
               <button 
                 onClick={() => setShowEmojiList(!showEmojiList)}

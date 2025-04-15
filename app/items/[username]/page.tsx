@@ -5,14 +5,7 @@ import { useState, useEffect } from 'react';
 import { getItem } from '@/utils/localStorage'; 
 import Link from 'next/link';
 import Image from 'next/image';
-export async function getStaticProps({params}:{params:Promise<any>}){
-  const {username} = await params;
-  return {
-    props:{
-      username
-    }
-  }
-}
+
 interface Item {
   id: string; // Keep id for potential internal use
   username: string;

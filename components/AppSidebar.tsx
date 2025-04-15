@@ -58,11 +58,11 @@ export function AppSidebar() {
         </Link>
       </div>
       
-      <div className="p-4">
+      {/* <div className="p-4">
         <Link onClick={()=>setMoveTo("home")} href="/">
         <StickyNote className="w-5 h-5 text-black" />
         </Link>
-      </div>
+      </div> */}
 
       <nav className="flex-1 flex items-center justify-center">
         <ul className="flex flex-col gap-4">

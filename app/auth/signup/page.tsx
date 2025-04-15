@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { saveUserDetails } from '@/utils/localStorage';
 import Link from 'next/link';
 
 export default function SignUpPage() {
@@ -10,6 +11,9 @@ export default function SignUpPage() {
     username: '',
     displayName: '',
     password: '',
+    image: '',
+    email: '',
+    description: '',
   });
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,7 +23,7 @@ export default function SignUpPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit =(e: FormEvent) => {
     e.preventDefault();
     setError(null);
     setIsSubmitting(true);
@@ -47,9 +51,12 @@ export default function SignUpPage() {
         displayName: formData.displayName,
         // Storing password directly - **DO NOT DO THIS IN PRODUCTION**
         password: formData.password,
+        image: formData.image,
+        email: formData.email,
+        description: formData.description,
       };
-
-      localStorage.setItem(formData.username, JSON.stringify(userData));
+ saveUserDetails(userData);
+      // localStorage.setItem(formData.username, JSON.stringify(userData));
 
       console.log('User signed up:', userData);
       // Redirect to login page after successful sign up
@@ -102,13 +109,56 @@ export default function SignUpPage() {
           </div>
           <div>
             <label htmlFor="displayName" className="block mb-1 text-sm font-medium text-gray-400">
-              Display name*
+              Display name
             </label>
             <input
               type="text"
               id="displayName"
               name="displayName"
               value={formData.displayName}
+              onChange={handleChange}
+              className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="image" className="block mb-1 text-sm font-medium text-gray-400">
+              Image*
+            </label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              value={formData.image}
+              onChange={handleChange}
+              className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="description" className="block mb-1 text-sm font-medium text-gray-400">
+              Description*
+            </label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-400">
+           Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-2 text-white bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required

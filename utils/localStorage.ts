@@ -5,7 +5,16 @@ interface Item {
   url: string;
   content: string;
   image: string;
-  createdAt: number;
+  createdAt: Date;
+}
+interface UserDetails {
+  username: string;
+  displayName: string;
+  password?: string; // Storing plain password is insecure
+  image?: string;
+  email?: string;
+  description?: string;
+  createdAt: Date;
 }
 
 const STORAGE_KEY = 'csn-next-items';
@@ -23,7 +32,7 @@ export const saveItem = (item: Omit<Item, 'id' | 'createdAt'>): Item => {
   const newItem: Item = {
     ...item,
     id: generateId(),
-    createdAt: Date.now()
+    createdAt: new Date()
   };
   
   // Save to localStorage
@@ -31,11 +40,71 @@ export const saveItem = (item: Omit<Item, 'id' | 'createdAt'>): Item => {
   
   return newItem;
 };
+//user list 보여주기
+const getUserDetailsArray = (): UserDetails[] => {
+  if (typeof window === 'undefined') {
+    return [];
+  }
+  const storedDetails = localStorage.getItem("csn-next-item");
+ 
+  try {
+    // Ensure it's an array, default to empty array if not found or invalid
+    const parsed = storedDetails ? JSON.parse(storedDetails) : [];
+    console.log(Array.isArray(parsed) ? parsed : [],'parsed');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    console.error("Error parsing user details array:", e);
+    return []; // Return empty array on parsing error
+  }
+};
 
-/**
- * Get all items from localStorage
- * @returns Array of items
- */
+//user 상세 보기
+export const getUserDetails = (username: string): UserDetails | undefined => {
+ 
+  const allUsers = getUserDetailsArray();
+  
+  const user:any = allUsers.find(u => u.username === username);
+ 
+  return user;
+};
+
+
+// Corrected saveUserDetails
+export const saveUserDetails = (userDetails: Omit<UserDetails, 'createdAt'>): void => {
+  if (typeof window === 'undefined') return;
+
+  const existingUserDetailsArray = getUserDetailsArray();
+console.log(new Date().toLocaleString(), 'Current date and time')
+  // Create the new user details object, adding createdAt timestamp
+  const newUserDetails: UserDetails = {
+    ...userDetails,
+    createdAt: new Date()
+  };
+
+
+
+  // Check if user already exists to prevent duplicates (optional: could update instead)
+  const userExists = existingUserDetailsArray.some(u => u.username === newUserDetails.username);
+
+  let updatedArray: UserDetails[];
+  if (userExists) {
+     // If user exists, update their details (optional behavior)
+     console.warn(`User ${newUserDetails.username} already exists. Updating details.`);
+     updatedArray = existingUserDetailsArray.map(u =>
+        u.username === newUserDetails.username ? { ...u, ...newUserDetails, createdAt: u.createdAt } : u // Keep original createdAt on update
+     );
+  } else {
+    // Add the new user to the beginning of the array
+    updatedArray = [newUserDetails, ...existingUserDetailsArray];
+  }
+
+
+  localStorage.setItem("csn-next-item", JSON.stringify(updatedArray));
+};
+
+
+
+
 export const getItems = (): Item[] => {
   // Check if window is defined (for SSR)
   if (typeof window === 'undefined') {
@@ -54,16 +123,15 @@ export const getItems = (): Item[] => {
  * @param id Item id
  * @returns Item or undefined if not found
  */
-export const getItem = (id: string): Item | undefined => {
+export const getItem = (username: string): Item | undefined => {
   const items = getItems();
-  return items.find(item => item.id === id);
+
+  return items.find(item => item.username === username);
 };
 
-/**
- * Delete item from localStorage
- * @param id Item id to delete
- * @returns true if deleted, false if not found
- */
+
+
+
 export const deleteItem = (id: string): boolean => {
   const items = getItems();
   const filteredItems = items.filter(item => item.id !== id);
@@ -78,12 +146,7 @@ export const deleteItem = (id: string): boolean => {
   return true;
 };
 
-/**
- * Edit an existing item
- * @param id Item id to edit
- * @param updates Updates to apply to the item
- * @returns Updated item or undefined if not found
- */
+
 export const editItem = (id: string, updates: Partial<Omit<Item, 'id' | 'createdAt'>>): Item | undefined => {
   const items = getItems();
   const itemIndex = items.findIndex(item => item.id === id);
@@ -115,18 +178,13 @@ export const clearItems = (): void => {
   localStorage.removeItem(STORAGE_KEY);
 };
 
-/**
- * Generate a random id
- * @returns Random id string
- */
+
 const generateId = (): string => {
   return Math.random().toString(36).substring(2, 15) + 
          Math.random().toString(36).substring(2, 15);
 };
 
-/**
- * Get cart items from localStorage
- */
+
 export const getCartItems = (): any[] => {
   if (typeof window === 'undefined') {
     return [];

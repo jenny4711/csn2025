@@ -1,10 +1,7 @@
 'use client';
 
-import { Calendar, Home, Inbox, Settings, ArrowLeft,CirclePlus,StickyNote } from "lucide-react"
+import {  ArrowLeft,StickyNote } from "lucide-react"
 import Link from "next/link"
-import {useState,useEffect} from "react"
-import { Sidebar } from "@/components/ui/sidebar";
-
 import { SearchIcon } from "../icons/Search"
 
 import { BrowserIcon } from "../icons/Browser"

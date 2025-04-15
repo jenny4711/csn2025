@@ -1,8 +1,8 @@
 "use client"
-import {useRouter, usePathname} from "next/navigation"
-import {useState,useEffect} from "react"
+import {usePathname} from "next/navigation"
 
-export default function NavBar({title,url}:{title:{title:string,url:string}[],url:string}) {
+
+export default function NavBar({title}:{title:{title:string,url:string}[],url:string}) {
   const pathname = usePathname();
 
   return <div className="h-18 w-full flex justify-first items-center ml-5">

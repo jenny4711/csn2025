@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import GiftItem from './components/GiftItem';
 
 interface Product {
@@ -48,7 +48,7 @@ export default function GiftShop() {
       const productElements = document.querySelectorAll('.product-image');
       const windowHeight = window.innerHeight;
 
-      productElements.forEach((element, index) => {
+      productElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
         const elementCenter = rect.top + rect.height / 2;
 

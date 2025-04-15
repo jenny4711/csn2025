@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { ArrowLeft } from "lucide-react"
 import { AppSidebar } from '@/components/AppSidebar';
 import { DataProvider } from "@/context/DataContext";
 

@@ -39,10 +39,7 @@
 //     </div>
 //   );
 // }
-// app/[username]/page.tsx
-// app/[username]/page.tsx
 
-// app/[username]/page.tsx
 import ClientWrapper from "./ClientWrapper";
 
 export default async function Page({ params }: { params: { username: string } }) {

@@ -18,7 +18,14 @@ interface UserDetails {
   createdAt: Date;
 }
 
-export default function UserPage({ params }: { params: { username: string } }) {
+interface PageProps {
+  params: {
+    username: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function UserPage({ params }: PageProps) {
   const [item, setItem] = useState<UserDetails | null | undefined>(undefined);
   const { username } = params;
  

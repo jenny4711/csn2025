@@ -72,7 +72,7 @@ export default function LoginPage() {
 
         {/* Link to Sign Up */}
         <div className="p-4 text-center bg-gray-700 rounded-md">
-           <p className="text-sm text-gray-400 mb-2">Don't have an account?</p>
+           <p className="text-sm text-gray-400 mb-2">Don&apos;t have an account?</p>
            <Link href="/auth/signup" className="w-full inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-gray-800">
               Switch to Sign Up
            </Link>

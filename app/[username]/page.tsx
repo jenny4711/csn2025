@@ -33,7 +33,7 @@ export default  function UserPage({ params }: { params: { username: string } }) 
       console.error("Error fetching item:", e);
       setItem(null); // Set to null on error
     }
-  }, [params.username]);
+  }, [username]);
 
   if (item === undefined) {
     return <div>Loading...</div>; // Show loading state

@@ -53,9 +53,9 @@ export function AppSidebar() {
   return (
     <div className="w-15 bg-light-500 text-white h-full flex flex-col">
       <div className="p-4">
-        <a href="/">
+        <Link href="/">
           <ArrowLeft className="w-5 h-5 text-black" />
-        </a>
+        </Link>
       </div>
       
       <div className="p-4">

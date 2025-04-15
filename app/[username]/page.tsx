@@ -42,15 +42,10 @@
 // app/[username]/page.tsx
 // app/[username]/page.tsx
 
+// app/[username]/page.tsx
 import ClientWrapper from "./ClientWrapper";
 
-interface PageProps {
-  params: {
-    username: string;
-  };
-}
-
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: { params: { username: string } }) {
   return <ClientWrapper username={params.username} />;
 }
 

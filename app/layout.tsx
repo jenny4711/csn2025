@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppSidebar } from '@/components/AppSidebar';
 import { DataProvider } from "@/context/DataContext";
+import Navbar from './components/Navbar';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
 });
 
@@ -21,24 +16,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="flex h-screen">
-          
-          <DataProvider>
-            <AppSidebar />
-            <main className="flex-1 overflow-auto">
-              {children}
-              <span className="hidden" suppressHydrationWarning>{new Date().toLocaleTimeString()}</span>
+    <html lang="en" className="overflow-x-hidden">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </head>
+      <body className={`${inter.className} overflow-x-hidden w-screen `}>
+        <DataProvider>
+          <div className="flex min-h-screen w-full overflow-x-hidden ">
+         
+              <AppSidebar />
+              
+            <main className="flex-1 overflow-x-hidden">
+              {/* <Navbar /> */}
+              <div className="pt-12 w-full overflow-x-hidden ml-3 md:ml-24  ">
+                {children}
+              </div>
             </main>
-          </DataProvider>
-        </div>
+          </div>
+        </DataProvider>
       </body>
     </html>
   );

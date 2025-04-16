@@ -1,5 +1,6 @@
 "use client"
-import NavBar from "@/components/NavBar"
+ import NavBar from "@/components/NavBar"
+import Navbar from "@/app/components/Navbar"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 const items=[

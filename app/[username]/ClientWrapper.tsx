@@ -1,16 +1,35 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-
-// 이제 여기서는 ssr: false 사용 가능
-const UserClient = dynamic(() => import("./UserClient"), { ssr: false });
+import { getUserDetails } from "@/utils/localStorage";
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { useEffect, useState } from "react";
 
 export default function ClientWrapper({ username }: { username: string }) {
-  console.log(username,'username-clientWrapper')
+  const [item, setItem] = useState<any>(null);
+
+  useEffect(() => {
+    const userDetails = getUserDetails(username);
+    setItem(userDetails);
+  }, [username]);
+
+  if (!item) {
+    return <div>User not found.</div>;
+  }
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <UserClient username={username} />
-    </Suspense>
+    <div className='flex flex-col items-center min-h-screen w-full overflow-x-hidden bg-white'>
+      <div className="flex flex-col items-start justify-center w-full max-w-md px-4 py-6">
+        <div className="flex flex-row items-center w-full">
+          <Avatar className="h-20 w-20 flex-shrink-0 mr-5">
+            <AvatarImage src={item.image} />
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-2xl font-semibold truncate">{item.username}</h2>
+            <p className="text-gray-500 truncate">{item.email}</p>
+          </div>
+        </div>
+        <p className="text-gray-500 mt-4 w-full break-words">{item?.description}</p>
+      </div>
+    </div>
   );
 }

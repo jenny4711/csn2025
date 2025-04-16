@@ -24,15 +24,15 @@ export default function Explore() {
   }, []);
 
   return (
-    <div>
-      <div className="p-4">
+    <div className="w-full overflow-x-hidden">
+      <div className="px-4 max-w-full">
         <Masonry
           breakpointCols={breakpointColumns}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
           {sources.map((post, index) => (
-            <div key={index}>
+            <div key={index} className="mb-4">
               <ContainerBox 
                 username={post.username}
                 title={post.title}

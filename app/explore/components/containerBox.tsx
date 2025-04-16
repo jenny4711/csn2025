@@ -24,14 +24,14 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-fit">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-fit w-full max-w-full overflow-hidden">
       <div className="px-4 py-3">
         <div className="flex items-center gap-2">
           <Link href={`/${username}`}>
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={`https://github.com/${username}.png`} />
-            <AvatarFallback>{username[0]}</AvatarFallback>
-          </Avatar>
+            <Avatar className="h-8 w-8 flex-shrink-0">
+              <AvatarImage src={`https://github.com/${username}.png`} />
+              <AvatarFallback>{username[0]}</AvatarFallback>
+            </Avatar>
           </Link>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium truncate">{username}</p>
@@ -42,14 +42,14 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
         </div>
       </div>
       
-      <div className="w-full">
+      <div className="w-full relative">
         <Image
           src={imageUrl}
           alt={title}
           width={0}
           height={0}
           sizes="100vw"
-          className="w-full h-auto rounded-sm"
+          className="w-full h-auto"
           priority
         />
       </div>
@@ -59,9 +59,9 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
         <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
         
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-gray-500">
+          <div className="flex items-center justify-between text-sm text-gray-500 gap-2">
             <textarea 
-              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none overflow-hidden"
+              className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none overflow-hidden"
               placeholder="Reply directly..."
               rows={1}
               onInput={(e) => {
@@ -70,7 +70,7 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
                 target.style.height = target.scrollHeight + 'px';
               }}
             />
-            <div className="relative">
+            <div className="relative flex-shrink-0">
               <button 
                 onClick={() => setShowEmojiList(!showEmojiList)}
                 className="hover:text-gray-900 p-1 rounded-full hover:bg-gray-100"
@@ -79,26 +79,19 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
               </button>
               {showEmojiList && (
                 <div 
-                  className="fixed bg-white rounded-lg shadow-xl border border-gray-200"
-                  style={{ 
-                    top: 'auto',
-                    left: 'auto',
-                    transform: 'translateY(8px)',
-                    zIndex: 9999
-                  }}
+                  className="absolute right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200"
+                  style={{ zIndex: 9999 }}
                 >
-                  <div>
-                    <EmojiPicker 
-                      onEmojiClick={(emoji) => handleEmojiClick(emoji.emoji)}
-                      width={320}
-                      height={400}
-                      previewConfig={{
-                        showPreview: false
-                      }}
-                      searchDisabled
-                      skinTonesDisabled
-                    />
-                  </div>
+                  <EmojiPicker 
+                    onEmojiClick={(emoji) => handleEmojiClick(emoji.emoji)}
+                    width={320}
+                    height={400}
+                    previewConfig={{
+                      showPreview: false
+                    }}
+                    searchDisabled
+                    skinTonesDisabled
+                  />
                 </div>
               )}
             </div>

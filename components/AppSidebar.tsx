@@ -84,7 +84,7 @@ export function AppSidebar() {
         </nav>
       </div>
       {/*mobile*/}
-<SideBarMD />
+      <SideBarMD />
       {/* Bottom sticky note */}
       <div className=" hidden md:block mt-8">
         <Link onClick={() => setMoveTo("home")} href="/">

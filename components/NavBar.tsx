@@ -2,7 +2,7 @@
 import {usePathname} from "next/navigation"
 import { useState } from 'react';
 import NavMD from './NavMD';
-import Link from "next/link";
+
 export default function NavBar({title}:{title:{title:string,url:string}[],url:string}) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +21,13 @@ export default function NavBar({title}:{title:{title:string,url:string}[],url:st
       ))}
     </ul>
     <div className="flex items-center  md:hidden">
-            <button
+            <div
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
             >
               <NavMD />
              
-            </button>
+            </div>
           </div>
   </div>
 }

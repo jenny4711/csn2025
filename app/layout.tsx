@@ -4,7 +4,7 @@ import "./globals.css";
 import { AppSidebar } from '@/components/AppSidebar';
 import { DataProvider } from "@/context/DataContext";
 import Navbar from './components/Navbar';
-
+import SideBarMD from "@/components/SideBarMD";
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="flex min-h-screen w-full overflow-x-hidden ">
          
               <AppSidebar />
-              
+           
             <main className="flex-1 overflow-x-hidden">
               {/* <Navbar /> */}
               <div className="pt-12 w-full overflow-x-hidden ml-3 md:ml-24  ">

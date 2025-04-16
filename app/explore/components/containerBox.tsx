@@ -4,12 +4,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState } from 'react';
 import { SmileIcon } from 'lucide-react';
 import EmojiPicker from 'emoji-picker-react';
+
 import Link from 'next/link';
 interface PostProps {
   username?: string;
   title?: string;
   description?: string;
   imageUrl?: string;
+ 
 }
 
 export function ContainerBox({ username = "User", title = "Project Title", description = "Project description goes here", imageUrl = "/placeholder.jpg" }: PostProps) {
@@ -24,8 +26,8 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-fit w-full max-w-full overflow-hidden">
-      <div className="px-4 py-3">
+    <div className="bg-white border  border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-full max-w-full overflow-hidden">
+      <div className="px-4 py-3 rounded-lg ">
         <div className="flex items-center gap-2">
           <Link href={`/${username}`}>
             <Avatar className="h-8 w-8 flex-shrink-0">

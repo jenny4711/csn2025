@@ -4,7 +4,7 @@ import { ContainerBox } from "./components/containerBox"
 import { sources } from '@/utils/tools'
 import Masonry from 'react-masonry-css'
 import { getItems } from '@/utils/localStorage';
-
+import { JobListings } from './components/JobListings';
 const breakpointColumns = {
   default: 5,
   1536: 4,  // xl
@@ -32,7 +32,13 @@ export default function Explore() {
           columnClassName="my-masonry-grid_column"
         >
           {sources.map((post, index) => (
-            <div key={index} className="mb-4">
+            index === 2?
+            <div key={index} className="rounded-xl  mb-8">
+           <JobListings />
+           </div>
+           :
+            
+            <div key={index} className=" rounded-xl  mb-8">
               <ContainerBox 
                 username={post.username}
                 title={post.title}

@@ -74,12 +74,12 @@ export default function SideBarMD() {
                     {
                       [["Twitter","Discord"],["FAQ","Support"],["Terms","Privacy"]].map((item,index) => (
                         <div key={index} className="flex flex-col ">
-                          <a href="/" className="text-xs text-gray-400">
+                          <Link href="/" className="text-xs text-gray-400">
                             {item[0]}
-                          </a>
-                          <a href="/" className="text-xs text-gray-400">
+                          </Link>
+                          <Link href="/" className="text-xs text-gray-400">
                             {item[1]}
-                          </a>
+                          </Link>
                         </div>
                       ))
                     }

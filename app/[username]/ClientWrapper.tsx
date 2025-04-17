@@ -1,15 +1,15 @@
 "use client";
 
-import { getUserDetails } from "@/utils/localStorage";
+import { getUserDetails, UserDetails } from "@/utils/localStorage";
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { useEffect, useState } from "react";
 
 export default function ClientWrapper({ username }: { username: string }) {
-  const [item, setItem] = useState<any>(null);
+  const [item, setItem] = useState<UserDetails | null>(null);
 
   useEffect(() => {
     const userDetails = getUserDetails(username);
-    setItem(userDetails);
+    setItem(userDetails || null);
   }, [username]);
 
   if (!item) {

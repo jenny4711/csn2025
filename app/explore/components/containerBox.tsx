@@ -26,8 +26,10 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
   };
 
   return (
-    <div className=" border    border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-100
-     md:w-86  overflow-hidden">
+    // <div className=" border    border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-100
+    //  md:w-86  overflow-hidden">
+    <div className="border border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-80 overflow-hidden   ">
+
       <div className="py-3 rounded-lg  ">
         <div className="flex items-center gap-2">
           <Link href={`/${username}`}>

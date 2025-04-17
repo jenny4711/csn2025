@@ -24,31 +24,54 @@ export default function Explore() {
   }, []);
 
   return (
-    <div className="w-full overflow-x-hidden">
-      <div className="  md:px-0 max-w-full flex justify-center md:justify-start">
-        <Masonry
-          breakpointCols={breakpointColumns}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {sources.map((post, index) => (
-            index === 2?
-            <div key={index} className="rounded-xl  mb-8">
-           <JobListings />
-           </div>
-           :
-            
-            <div key={index} className="  rounded-xl  mb-8">
-              <ContainerBox 
+     <div className="w-full   ">
+    {/* // <div className="w-full max-w-7xl mx-auto px-4"> */}
+
+  <Masonry
+    breakpointCols={breakpointColumns}
+    className=" w-full  flex justify-center md:justify-start  "
+    columnClassName="flex flex-col gap-4"
+  >
+    {sources.map((post, index) => (
+      index === 2
+        ? <div key={index}><JobListings /></div>
+        : <div key={index}>
+           <ContainerBox 
                 username={post.username}
                 title={post.title}
                 description={post.content}
                 imageUrl={post.image}
               />
-            </div>
-          ))}
-        </Masonry>
-      </div>
-    </div>
+        </div>
+    ))}
+  </Masonry>
+</div>
+
+    // <div className="w-full overflow-x-hidden ">
+    //   <div className="  md:px-0 max-w-full flex justify-center md:justify-start grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+    //     <Masonry
+    //       breakpointCols={breakpointColumns}
+    //       className="my-masonry-grid"
+    //       columnClassName="my-masonry-grid_column"
+    //     >
+    //       {sources.map((post, index) => (
+    //         index === 2?
+    //         <div key={index} className="rounded-xl  mb-8">
+    //        <JobListings />
+    //        </div>
+    //        :
+            
+    //         <div key={index} className="  rounded-xl  mb-8">
+    //           <ContainerBox 
+    //             username={post.username}
+    //             title={post.title}
+    //             description={post.content}
+    //             imageUrl={post.image}
+    //           />
+    //         </div>
+    //       ))}
+    //     </Masonry>
+    //   </div>
+    // </div>
   )
 }

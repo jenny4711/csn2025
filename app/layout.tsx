@@ -31,7 +31,7 @@ export default function RootLayout({
            
             <main className="flex-1 overflow-x-hidden">
               {/* <Navbar /> */}
-              <div className="pt-12 w-full overflow-x-hidden ml-0 md:ml-24  ">
+              <div className="  pt-12 w-full overflow-x-hidden justify-center px-15 ml-0 md:ml-10 ">
                 {children}
               </div>
             </main>

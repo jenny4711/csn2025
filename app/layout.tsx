@@ -25,13 +25,13 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} overflow-x-hidden w-screen `}>
         <DataProvider>
-          <div className="flex min-h-screen w-full overflow-x-hidden ">
+          <div className="flex min-h-screen w-full overflow-x-hidden  ">
          
               <AppSidebar />
            
             <main className="flex-1 overflow-x-hidden">
               {/* <Navbar /> */}
-              <div className="  pt-12 w-full overflow-x-hidden justify-center px-15 ml-0 md:ml-10 ">
+              <div className="  pt-12 w-full overflow-x-hidden justify-center px-0 md:px-15 ml-0 md:ml-10 ">
                 {children}
               </div>
             </main>

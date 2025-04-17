@@ -6,7 +6,7 @@ import NavMD from './NavMD';
 export default function NavBar({title}:{title:{title:string,url:string}[],url:string}) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  return <div className="h-18 w-full flex  justify-first items-center ml-0 md:ml-0  ">
+  return <div className="h-18 w-full  flex  justify-first items-center ml-0 md:ml-0  ">
     {/* <ul className='flex flex-row space-x-6 '> */}
     <ul className={`flex flex-row space-x-6 hidden md:flex `}>
       {title.map((item) => (

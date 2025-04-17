@@ -29,8 +29,8 @@ export default function Explore() {
 
   <Masonry
     breakpointCols={breakpointColumns}
-    className=" w-full  flex justify-center md:justify-start  "
-    columnClassName="flex flex-col gap-4"
+    className=" w-full  flex   justify-center md:justify-start  "
+    columnClassName="flex flex-col  items-center md:items-start gap-4"
   >
     {sources.map((post, index) => (
       index === 2

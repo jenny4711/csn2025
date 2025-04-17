@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState } from 'react';
 import { SmileIcon } from 'lucide-react';
 import EmojiPicker from 'emoji-picker-react';
-
+import { PaperPlaneIcon } from '@/icons';
 import Link from 'next/link';
 interface PostProps {
   username?: string;
@@ -28,23 +28,32 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
   return (
     // <div className=" border    border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-100
     //  md:w-86  overflow-hidden">
-    <div className="border border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-80 overflow-hidden   ">
+    <div className="border border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-110 md:w-80 overflow-hidden   ">
 
       <div className="py-3 rounded-lg  ">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col items-start gap-2">
+
+         <div className='flex flex-row justify-between items-center w-full  '>
           <Link href={'/#'}>
             <Avatar className="h-8 w-8 flex-shrink-0">
               <AvatarImage src={`https://github.com/${username}.png`} />
               <AvatarFallback>{username[0]}</AvatarFallback>
             </Avatar>
           </Link>
+          <div className="flex items-center border border-gray-200 p-2 rounded-full">
+              <span className="text-xs text-gray-400 mr-2">View on Posts</span>
+              <PaperPlaneIcon className='w-4 h-4' />
+            </div>
+            </div>
+
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium truncate">{username}</p>
-            <div className="flex items-center gap-1">
-              <span className="text-xs text-gray-500">View on Posts</span>
-            </div>
+
+           
+
           </div>
         </div>
+
       </div>
       
       <div className="w-full relative">

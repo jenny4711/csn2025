@@ -48,7 +48,7 @@ export function AppSidebar() {
   const { moveTo, setMoveTo } = useDataContext();
   
   return (
-    <div className=" h-screen w-16 flex flex-col  border-r border-gray-200 items-center py-5  fixed top-0 left-0 right-0 z-50 ">
+    <div className=" h-screen w-0 md:w-16 flex flex-col  border-r border-gray-200 items-center py-5   top-0 left-0 right-0 z-50 none md:fixed">
       {/* Top arrow */}
       <div className=" hidden md:block mb-8 mt-2.5">
         <Link href="/">
@@ -58,7 +58,7 @@ export function AppSidebar() {
 
       {/* Sidebar navigation */}
       <div className=" hidden md:block  flex-1 flex items-center content-center ">
-        <nav className="  flex flex-col gap-2.5  ">
+        <nav >
           <ul className="flex flex-col gap-2.5 ">
           {items.map((item) => (
             <li key={item.title} className="list-none">

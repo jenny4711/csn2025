@@ -18,20 +18,23 @@ export default function ExploreLayout({
   children: React.ReactNode
 }) {
   const router = useRouter();
-  return <div>
-    <div className="flex flex-row justify-between items-center">
+  return <div className="flex flex-col">
+    <div className=" flex flex-row justify-between items-center px-4">
+
     <NavBar title={items} url="/explore"  />
-    <Button className='rounded-full bg-black text-white mr-35' onClick={()=>{
+    <Button className='rounded-full bg-black text-white' onClick={()=>{
       router.push("/auth/signup")
     }}>
       <p>Log in or sign up</p>
     </Button>
     </div>
+
     <div className="flex flex-1">
       <main className="flex-1 overflow-auto  ">
         {children}
         <span className="hidden" suppressHydrationWarning>{new Date().toLocaleTimeString()}</span>
       </main>
     </div>
+
   </div>
 }

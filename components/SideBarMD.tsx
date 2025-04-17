@@ -6,19 +6,14 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
+
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { usePathname } from "next/navigation"
+
 import Link from "next/link"
 import { NoteIcon } from "../icons/Note"
 import { UserIcon } from "../icons/User"
-import { SearchIcon } from "../icons/Search"
 import { SendIcon } from "../icons/Send"
-import { FeedIcon } from "../icons/Feed"
 import { BrowserIcon } from "../icons/Browser"
 import { useDataContext } from "@/context/DataContext"
 const items = [
@@ -46,13 +41,9 @@ const items = [
   },
 ]
 export default function SideBarMD() {
-    const { moveTo, setMoveTo } = useDataContext();
+    const { setMoveTo } = useDataContext();
     return (
-        // <div className="md:hidden absolute top-180 left-10 right-0 z-50  rounded-full w-12 h-12 flex items-center justify-center shadow-md">
-        //     <Button className="hover:bg-white cursor-pointer flex items-center justify-center" variant="ghost" size="icon">
-        //         <AlignLeft className="w-7 h-7" />
-        //     </Button>
-        // </div>
+       
     
         <div className="grid grid-cols-2 gap-2 relative">
           <Sheet key="left" >
@@ -64,8 +55,8 @@ export default function SideBarMD() {
                
                 <div className="grid gap-7 pb-5 pl-8">
                   {
-                    items.map((item) => (
-                      <div className="grid grid-cols-6 items-center gap-4">
+                    items.map((item,index) => (
+                      <div key={index} className="grid grid-cols-6 items-center gap-4">
                         <item.icon className="w-6 h-6 text-black" />
                         <Link className="flex  flex-row text-sm" href={item.url}>
                         
@@ -81,8 +72,8 @@ export default function SideBarMD() {
                   </div>
                   <div className="flex flex-row justify-start gap-5 pb-15  ">
                     {
-                      [["Twitter","Discord"],["FAQ","Support"],["Terms","Privacy"]].map((item) => (
-                        <div className="flex flex-col ">
+                      [["Twitter","Discord"],["FAQ","Support"],["Terms","Privacy"]].map((item,index) => (
+                        <div key={index} className="flex flex-col ">
                           <a href="/" className="text-xs text-gray-400">
                             {item[0]}
                           </a>

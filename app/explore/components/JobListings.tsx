@@ -80,7 +80,7 @@ const jobListings = [
 
 export function JobListings() {
     return (
-        <div className="bg-white border  border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-full max-w-full overflow-hidden">
+        <div className="bg-white border  border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-90 max-w-full overflow-hidden">
             <p className="text-xs text-gray-400  font-light pt-4 ml-8">Job Listings</p>
             <ul className="flex flex-col gap-4 p-4  ">
              {

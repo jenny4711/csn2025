@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppSidebar } from '@/components/AppSidebar';
 import { DataProvider } from "@/context/DataContext";
-import Navbar from './components/Navbar';
-import SideBarMD from "@/components/SideBarMD";
+
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -32,7 +31,7 @@ export default function RootLayout({
            
             <main className="flex-1 overflow-x-hidden">
               {/* <Navbar /> */}
-              <div className="pt-12 w-full overflow-x-hidden ml-3 md:ml-24  ">
+              <div className="pt-12 w-full overflow-x-hidden ml-0 md:ml-24  ">
                 {children}
               </div>
             </main>

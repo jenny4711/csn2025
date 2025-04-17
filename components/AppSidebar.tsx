@@ -48,7 +48,7 @@ export function AppSidebar() {
   const { moveTo, setMoveTo } = useDataContext();
   
   return (
-    <div className=" h-screen w-13 flex flex-col   items-center py-5  fixed top-0 left-0 right-0 z-50 ">
+    <div className=" h-screen w-16 flex flex-col  border-r border-gray-200 items-center py-5  fixed top-0 left-0 right-0 z-50 ">
       {/* Top arrow */}
       <div className=" hidden md:block mb-8 mt-2.5">
         <Link href="/">

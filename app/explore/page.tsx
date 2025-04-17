@@ -25,7 +25,7 @@ export default function Explore() {
 
   return (
     <div className="w-full overflow-x-hidden">
-      <div className="px-4 max-w-full">
+      <div className="  md:px-0 max-w-full flex justify-center md:justify-start">
         <Masonry
           breakpointCols={breakpointColumns}
           className="my-masonry-grid"
@@ -38,7 +38,7 @@ export default function Explore() {
            </div>
            :
             
-            <div key={index} className=" rounded-xl  mb-8">
+            <div key={index} className="  rounded-xl  mb-8">
               <ContainerBox 
                 username={post.username}
                 title={post.title}

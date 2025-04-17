@@ -1,6 +1,5 @@
 "use client"
  import NavBar from "@/components/NavBar"
-import Navbar from "@/app/components/Navbar"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 const items=[
@@ -22,14 +21,14 @@ export default function ExploreLayout({
   return <div>
     <div className="flex flex-row justify-between items-center">
     <NavBar title={items} url="/explore"  />
-    <Button className='rounded-full bg-black text-white mr-5' onClick={()=>{
+    <Button className='rounded-full bg-black text-white mr-35' onClick={()=>{
       router.push("/auth/signup")
     }}>
       <p>Log in or sign up</p>
     </Button>
     </div>
     <div className="flex flex-1">
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto  ">
         {children}
         <span className="hidden" suppressHydrationWarning>{new Date().toLocaleTimeString()}</span>
       </main>

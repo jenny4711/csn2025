@@ -26,8 +26,9 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
   };
 
   return (
-    <div className="bg-white border  border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-full max-w-full overflow-hidden">
-      <div className="px-4 py-3 rounded-lg ">
+    <div className=" border    border-gray-200 rounded-lg hover:shadow-lg transition-shadow h-fit w-100
+     md:w-86  overflow-hidden">
+      <div className="py-3 rounded-lg  ">
         <div className="flex items-center gap-2">
           <Link href={`/${username}`}>
             <Avatar className="h-8 w-8 flex-shrink-0">

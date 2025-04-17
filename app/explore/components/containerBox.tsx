@@ -32,7 +32,7 @@ export function ContainerBox({ username = "User", title = "Project Title", descr
 
       <div className="py-3 rounded-lg  ">
         <div className="flex items-center gap-2">
-          <Link href={`/${username}`}>
+          <Link href={'/#'}>
             <Avatar className="h-8 w-8 flex-shrink-0">
               <AvatarImage src={`https://github.com/${username}.png`} />
               <AvatarFallback>{username[0]}</AvatarFallback>

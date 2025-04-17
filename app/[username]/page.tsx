@@ -42,8 +42,16 @@
 
 import ClientWrapper from "./ClientWrapper";
 
-export default async function Page({ params }: { params: { username: Promise<string> } }) {
-  const username = await params.username;
-  return <ClientWrapper username={username} />;
+type PageProps = {
+  params: {
+    username: string;
+  };
+};
+export async function generateStaticParams() {
+  return [{ username: "johndoe" }, { username: "alice" }];
 }
 
+export default function Page({ params }: PageProps) {
+  const { username } = params;
+  return <ClientWrapper username={username} />;
+}

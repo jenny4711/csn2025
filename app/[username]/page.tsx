@@ -42,7 +42,8 @@
 
 import ClientWrapper from "./ClientWrapper";
 
-export default async function Page({ params }: { params: { username: string } }) {
-  return <ClientWrapper username={params.username} />;
+export default async function Page({ params }: { params: { username: Promise<string> } }) {
+  const username = await params.username;
+  return <ClientWrapper username={username} />;
 }
 

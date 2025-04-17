@@ -15,7 +15,7 @@ import { NoteIcon } from "../icons/Note"
 import { UserIcon } from "../icons/User"
 import { SendIcon } from "../icons/Send"
 import { BrowserIcon } from "../icons/Browser"
-import { useDataContext } from "@/context/DataContext"
+
 const items = [
   {
     title: "Explore",
